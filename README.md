@@ -1,4 +1,5 @@
 # weather-app
+
 Simulation of real teamwork: branching, PR, review, conflicts. Weather API app for training frontend workflow.
 
 # Weather App
@@ -6,7 +7,9 @@ Simulation of real teamwork: branching, PR, review, conflicts. Weather API app f
 Учебный проект для имитации командной разработки на GitHub.
 
 ## Цель проекта
+
 Смоделировать реальный рабочий процесс:
+
 - работа в feature-ветках;
 - создание Pull Request;
 - code review;
@@ -15,26 +18,38 @@ Simulation of real teamwork: branching, PR, review, conflicts. Weather API app f
 - слияние в основную ветку (`main`).
 
 ## Командные роли
+
 - **PM / Lead** — управление задачами, ревью, принятие решений по архитектуре.
 - **Developer A** — разработка UI/структуры проекта.
 - **Developer B** — реализация API-логики.
 
 ## Стек технологий
+
 - JavaScript (ES6+)
 - Fetch API
 - WeatherAPI (или аналогичный сервис)
 - Git + GitHub Flow
 
 ## Структура репозитория
+
 - `main` — стабильная версия проекта
 - `feature/*` — ветки разработчиков для отдельных задач
 - `docs/` — документация, описание спринтов и задач
 - `src/` — исходный код приложения
 
 ## Правила работы с репозиторием
+
 1. Любая задача выполняется в отдельной ветке:  
    `feature/<task-name>`
 2. Перед началом разработки:
    ```bash
    git pull origin main
+   ```
 
+## Правила коммитов
+
+1. feat: добавлена функция fetch погоды
+2. fix: починен вывод иконки
+3. refactor: вынесена логика в utils
+4. docs: обновлен README
+5. style: форматирование кода
