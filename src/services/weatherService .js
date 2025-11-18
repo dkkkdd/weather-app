@@ -1,14 +1,10 @@
-import { findCityWeather } from '../api/weather'
+import { fetchData } from '../api/weather'
 
 export const fetchCityWeather = async (city) => {
-  if (!city.trim()) {
-    // throw new Error('City is required')
-    city = await getCityCoords()
-  }
+  if (!city.trim()) city = 'auto:ip'
 
-  const raw = await findCityWeather(city)
+  const raw = await fetchData(city, 'current')
 
-  // нормализуем что нужно UI, красиво чистим данные
   return {
     name: raw.location.name,
     country: raw.location.country,
@@ -21,20 +17,17 @@ export const fetchCityWeather = async (city) => {
   }
 }
 
-function getPosition() {
-  return new Promise((resolve, reject) => {
-    navigator.geolocation.getCurrentPosition(
-      (pos) => resolve(pos),
-      (err) => reject(err)
-    )
-  })
-}
+// function getPosition() {
+//   return new Promise((resolve, reject) => {
+//     navigator.geolocation.getCurrentPosition(resolve, reject)
+//   })
+// }
 
-async function getCityCoords() {
-  try {
-    const pos = await getPosition()
-    return `${pos.coords.latitude},${pos.coords.longitude}`
-  } catch (e) {
-    console.log('Ошибка:', e.message)
-  }
-}
+// async function getCityCoords() {
+//   try {
+//     const pos = await getPosition()
+//     return `${pos.coords.latitude},${pos.coords.longitude}`
+//   } catch (err) {
+//     throw err
+//   }
+// }
