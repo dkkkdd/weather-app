@@ -1,0 +1,19 @@
+.precip-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4em;
+}
+
+.precip-value {
+  display: inline-block;
+  font-size: 1.9em;
+  font-weight: 700;
+}
+
+.precip-desc {
+  opacity: 0.75;
+  font-size: 1em;
+  text-align: center;
+}

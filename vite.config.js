@@ -1,8 +1,10 @@
 import { defineConfig } from 'vite'
 import path from 'node:path'
+import react from '@vitejs/plugin-react'
 
 export default defineConfig({
-  root: 'src', 
+  plugins: [react()],
+  root: 'src',
   publicDir: '../public',
   server: {
     open: true,

@@ -1,0 +1,17 @@
+.uv-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4em;
+}
+
+.uv-value {
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.uv-desc {
+  opacity: 0.75;
+  font-size: 0.9rem;
+  text-align: center;
+}

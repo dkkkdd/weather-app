@@ -1,0 +1,110 @@
+/* ====== MAX RESET ====== */
+
+/* Убираем все отступы и паддинги */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Убираем оформление текста и шрифтовые приколы */
+html,
+body {
+  width: 100%;
+  height: 100%;
+  line-height: 1;
+  background: none;
+}
+
+/* Убираем списки */
+ul,
+ol {
+  list-style: none;
+}
+
+/* Убираем оформление ссылок */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Убираем оформление таблиц */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* Убираем жирность, курсив и прочие дефолтные стили */
+b,
+strong {
+  font-weight: inherit;
+}
+i,
+em {
+  font-style: inherit;
+}
+
+/* Убираем тени, границы, рамки у всех */
+*:where(:not(html, body)) {
+  border: none;
+  outline: none;
+  box-shadow: none;
+}
+
+/* Убираем кнопочные и инпутовые стили */
+button,
+input,
+textarea,
+select {
+  background: none;
+  border: none;
+  outline: none;
+  color: inherit;
+  appearance: none;
+}
+
+/* Картинки и медиа адекватно масштабируются */
+img,
+video {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Сбрасываем заголовки */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: inherit;
+}
+h1 {
+  font-size: 4em;
+}
+
+h3 {
+  font-size: 1em;
+}
+
+/* Сбрасываем цитаты */
+blockquote {
+  quotes: none;
+}
+blockquote::before,
+blockquote::after {
+  content: '';
+}
+
+/* Сбрасываем кнопки */
+button {
+  cursor: pointer;
+}
+
+/* Скрываем скролл — по желанию (убери если не нужно) */
+/* ::-webkit-scrollbar {
+  display: none;
+} */
