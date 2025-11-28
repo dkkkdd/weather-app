@@ -1,0 +1,16 @@
+.humidity-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5em;
+}
+
+.humidity-value {
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.humidity-desc {
+  opacity: 0.8;
+  font-size: 0.9rem;
+}

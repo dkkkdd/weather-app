@@ -1,0 +1,16 @@
+.pressure-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4em;
+}
+
+.pressure-value {
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+
+.pressure-desc {
+  opacity: 0.75;
+  font-size: 0.9rem;
+}

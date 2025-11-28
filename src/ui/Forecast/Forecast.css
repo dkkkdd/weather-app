@@ -1,0 +1,80 @@
+.forecast-cards {
+  display: flex;
+  flex-direction: column;
+  padding: 0.5em 1em;
+  border-radius: 1em;
+  backdrop-filter: blur(25px);
+}
+.forecast-card {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 0.5fr) minmax(0, 2fr);
+  align-items: center;
+  padding: 1em;
+  min-height: 5em;
+}
+.forecast-card:not(:last-child) {
+  border-bottom: 1px solid #aaaaaa37;
+}
+img {
+  max-width: 2em;
+  max-height: 2em;
+}
+
+#temperature {
+  font-size: 1.5em;
+  font-weight: 600;
+}
+.temp-info {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5em;
+}
+
+/* THE SLIDER */
+input[type='range'] {
+  -webkit-appearance: none;
+  max-width: 9em;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 20px;
+  padding: 0 12px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  outline: none;
+}
+
+/* Track */
+input[type='range']::-webkit-slider-runnable-track {
+  height: 6px; /* <<< тоньше */
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.65), rgba(255, 255, 255, 0.2));
+  border-radius: 999px;
+}
+
+/* Thumb */
+input[type='range']::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 0.3em; /* <<< меньше */
+  width: 0.3em; /* <<< меньше */
+  margin-top: -1px;
+  background: #fff;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow:
+    0 2px 4px rgba(0, 0, 0, 0.25),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.7);
+}
+
+.weather-icon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.weather-icon p {
+  margin-top: 0.2em;
+  font-size: 0.7em;
+  color: rgb(58, 149, 224);
+}
+
+h3 {
+  text-align: start;
+}
