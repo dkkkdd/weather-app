@@ -1,0 +1,19 @@
+{
+  "Ясно": "/clear.jpg",
+
+  "Солнечно": "/sunny.jpg",
+
+  "Переменная облачность": "/little-cloudy.jpg",
+  "Пасмурно": "/cloudy.jpg",
+
+  "Дождь": "/rain.jpg",
+  "Небольшой дождь": "/light-rain.jpg",
+  "Местами дождь": "/light-rain.jpg",
+  "Гроза": "/thunder.webp",
+
+  "Снег": "/snow.jpg",
+  "Небольшой снег": "/snow.jpg",
+
+  "Дымка": "/smog.jpg",
+  "Туман": "/foggy.jpg"
+}
