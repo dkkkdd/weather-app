@@ -1,0 +1,31 @@
+.search-block {
+  position: relative;
+}
+
+.hints {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+  padding: 1em;
+  max-width: 80%;
+
+  background: rgb(67, 67, 67);
+
+  border-radius: 10px;
+  position: absolute;
+  top: 100%;
+  left: 10%;
+  width: 100%;
+}
+ul li {
+  cursor: pointer;
+  padding: 0.4em;
+  border-radius: 5px;
+  width: 100%;
+  text-align: start;
+  line-height: 1.4;
+}
+
+ul li:hover {
+  background-color: #0000001f;
+}

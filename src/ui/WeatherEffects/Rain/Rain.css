@@ -1,0 +1,8 @@
+.ultra-rain-canvas {
+  position: fixed;
+  inset: 0;
+  width: 100vw; /* не менять */
+  height: 100vh; /* не менять */
+
+  pointer-events: none;
+}

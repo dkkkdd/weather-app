@@ -1,7 +1,7 @@
 import './Forecast.css'
 import { formatDate } from '../../utils/formatDate'
 
-export const Forecast = ({ weather }) => {
+export const Forecast = ({ weather, unit }) => {
   return (
     <div className="forecast">
       <div className="forecast-cards">
@@ -13,17 +13,17 @@ export const Forecast = ({ weather }) => {
               <p>{item.will_it_rain === 1 ? item.daily_chance_of_rain + '%' : ''}</p>
             </div>
             <div className="temp-info">
-              {Math.round(item.minTemp)}°
+              {unit === 'C' ? Math.round(item.minTemp_c) : Math.round(item.minTemp_f)}°
               <input
                 type="range"
                 name="temperature"
                 id="temperature"
-                min={item.minTemp}
-                max={item.maxTemp}
-                defaultValue={item.avgTemp}
+                min={unit === 'C' ? item.minTemp_c : item.minTemp_f}
+                max={unit === 'C' ? item.maxTemp_c : item.maxTemp_f}
+                value={unit === 'C' ? item.avgTemp_c : item.avgTemp_f}
                 disabled
               />
-              {Math.round(item.maxTemp)}°
+              {unit === 'C' ? Math.round(item.maxTemp_c) : Math.round(item.maxTemp_f)}°
             </div>
           </div>
         ))}

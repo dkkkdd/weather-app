@@ -1,9 +1,16 @@
 .hours-container {
   display: flex;
   overflow-x: auto;
+
+  scrollbar-width: none;
   gap: 0.5rem;
+  padding: 1em;
+  backdrop-filter: blur(25px);
+  border-radius: 1em;
+  border: 1px solid rgba(255, 255, 255, 0.12);
 }
 .hour-card {
+  max-width: 4.5em;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -14,5 +21,7 @@
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 
   border: 1px solid rgba(255, 255, 255, 0.13);
-  backdrop-filter: blur(25px);
+}
+.swiper-no-swiping {
+  touch-action: pan-x !important;
 }

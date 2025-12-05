@@ -1,6 +1,6 @@
 import './Hours.css'
 
-export const Hours = ({ data, nextDay }) => {
+export const Hours = ({ data, nextDay, unit }) => {
   data = data.hours
   nextDay = Object.values(nextDay)
 
@@ -18,18 +18,22 @@ export const Hours = ({ data, nextDay }) => {
   const allHours = [currentHour, ...todayFuture.slice(1), ...nextChunk]
 
   return (
-    <div className="hours-container">
+    <div className="hours-container swiper-no-swiping">
       <div className="hour-card now-card">
         <p className="hour-time">Сейчас</p>
         <img src={currentHour.icon} className="hour-icon" />
-        <p className="hour-temp">{Math.round(currentHour.temp)}°</p>
+        <p className="hour-temp">
+          {unit === 'C' ? Math.round(currentHour.temp_c) : Math.round(currentHour.temp_f)}°
+        </p>
       </div>
 
       {allHours.slice(1).map((hour) => (
         <div key={hour.time} className="hour-card">
           <p className="hour-time">{hour.time.slice(11, 16)}</p>
           <img src={hour.icon} className="hour-icon" />
-          <p className="hour-temp">{Math.round(hour.temp)}°</p>
+          <p className="hour-temp">
+            {unit === 'C' ? Math.round(hour.temp_c) : Math.round(hour.temp_f)}°
+          </p>
         </div>
       ))}
     </div>

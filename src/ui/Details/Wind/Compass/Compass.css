@@ -1,0 +1,111 @@
+.compass {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 10em;
+  height: 10em;
+  padding: 0;
+}
+
+.compass-ring {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: inset 0 0 18px rgba(0, 0, 0, 0.35);
+}
+
+.mark {
+  position: absolute;
+  font-size: 1.2em;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.85);
+  z-index: 30;
+}
+
+.mark.n {
+  top: 3%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.mark.e {
+  right: 3%;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.mark.s {
+  bottom: 3%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.mark.w {
+  left: 3%;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.arrow {
+  --rotation: 0deg;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0.3em;
+  height: 38%;
+  background: linear-gradient(to top, rgba(255, 255, 255, 0.25), rgba(120, 170, 255, 1));
+  border-radius: 999px;
+  transform: translate(-50%, -100%) rotate(var(--rotation));
+  transform-origin: 50% 100%;
+  transition: transform 0.35s ease;
+}
+
+.arrow::after {
+  content: '';
+  position: absolute;
+  top: -0.55em;
+  left: 50%;
+  transform: translateX(-50%);
+  border-left: 0.45em solid transparent;
+  border-right: 0.45em solid transparent;
+  border-bottom: 0.7em solid rgba(120, 170, 255, 1);
+  z-index: 0;
+}
+
+@media (max-width: 900px) {
+  .compass {
+    width: 7em;
+    height: 7em;
+  }
+  .mark {
+    font-size: 0.9em;
+  }
+  .arrow {
+    height: 35%;
+    width: 0.25em;
+  }
+  .arrow::after {
+    border-left-width: 0.38em;
+    border-right-width: 0.38em;
+    border-bottom-width: 0.6em;
+  }
+}
+
+@media (max-width: 420px) {
+  .compass {
+    width: 5em;
+    height: 5em;
+  }
+  .mark {
+    font-size: 0.65em;
+  }
+  .arrow {
+    height: 32%;
+    width: 0.22em;
+  }
+  .arrow::after {
+    border-left-width: 0.32em;
+    border-right-width: 0.32em;
+    border-bottom-width: 0.5em;
+  }
+}

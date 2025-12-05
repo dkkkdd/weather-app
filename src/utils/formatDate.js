@@ -1,5 +1,14 @@
-import { format, isToday, isTomorrow } from 'date-fns'
-import { ru } from 'date-fns/locale'
+import { isToday, isTomorrow } from 'date-fns'
+
+const shortDays = [
+  'вс', // 0
+  'пн', // 1
+  'вт', // 2
+  'ср', // 3
+  'чт', // 4
+  'пт', // 5
+  'сб', // 6
+]
 
 export const formatDate = (dateStr) => {
   const date = new Date(dateStr)
@@ -7,5 +16,5 @@ export const formatDate = (dateStr) => {
   if (isToday(date)) return 'сегодня'
   if (isTomorrow(date)) return 'завтра'
 
-  return format(date, 'E', { locale: ru })
+  return shortDays[date.getDay()]
 }

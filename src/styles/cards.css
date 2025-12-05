@@ -1,0 +1,41 @@
+.card {
+  background: rgba(255, 255, 255, 0.07);
+  backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 20px;
+
+  padding: 1.4em 1.2em;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  min-height: 11em;
+
+  box-shadow:
+    0 4px 14px rgba(0, 0, 0, 0.18),
+    inset 0 0 0 0 rgba(255, 255, 255, 0);
+  transition: 0.2s ease;
+}
+
+.card:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.25);
+}
+
+.card h4 {
+  opacity: 0.6;
+  font-weight: 600;
+  margin-bottom: 0.8em;
+  min-height: 1.3em;
+}
+.card-content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.6em;
+  flex-grow: 1;
+}

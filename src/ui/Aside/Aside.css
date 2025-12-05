@@ -1,0 +1,33 @@
+.bar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.bar h2 {
+  margin-bottom: 1em;
+}
+.aside-city {
+  padding: 1em 5em;
+  width: 100%;
+  position: relative;
+  cursor: pointer;
+  border-bottom: 1px solid #f2f2f22a;
+}
+.aside-city:hover {
+  background-color: #e8e8e854;
+}
+.delete-city-btn {
+  position: absolute;
+  top: 30%;
+  right: 0.5em;
+
+  transition: all 0.1s ease-in;
+}
+
+.delete-city-btn:hover {
+  color: rgb(65, 65, 65);
+}
+.aside-city.active {
+  background-color: #ffffff2a;
+}

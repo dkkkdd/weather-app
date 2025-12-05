@@ -1,0 +1,15 @@
+.current-weather-big {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  align-items: center;
+  justify-content: center;
+  padding: 2em 1em;
+  text-align: center;
+}
+.condition {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+}
