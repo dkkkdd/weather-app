@@ -35,6 +35,7 @@
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  transition: background-image 0.3s ease;
 }
 
 a {
@@ -66,44 +67,33 @@ h1 {
   text-align: center;
 }
 
-.layout {
-  display: flex;
-  min-height: 100vh;
-  width: 100%;
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background-color: var(--back-color);
+  color: var(--text-color);
+  overflow: hidden; /* Мы сами контролируем скролл внутри page-scroll */
 }
 
-.sidebar {
-  max-width: 20em;
-  border-right: 1px solid rgba(255, 255, 255, 0.1);
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(10px);
-  padding: 4em 1em;
-}
-@media (max-width: 1200px) {
-  .sidebar {
-    min-width: 100%;
-  }
-}
-
-.content-wrapper {
-  position: relative;
-  flex: 1;
-
-  overflow: hidden;
-}
-
-.swiper-container-fixed {
-  position: absolute;
-  inset: 0;
-  width: 100%;
+#root {
+  margin: 0 auto;
+  text-align: center;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  transition: background-image 0.3s ease;
   height: 100%;
 }
 
+/* SINGLE SCROLL AREA */
 .page-scroll {
   overflow-y: auto;
+  scrollbar-width: none;
   height: 100%;
   padding: 1rem;
-  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
 }
 
 .fade-screen {
@@ -119,9 +109,14 @@ h1 {
     background-image 0.4s ease,
     opacity 0.4s ease;
 }
-.bg-fade {
+#root.bg-fade {
   opacity: 0;
+  transition: opacity 0.3s ease;
 }
 .bg-fade.show {
+  opacity: 1;
+}
+
+#root:not(.bg-fade) {
   opacity: 1;
 }

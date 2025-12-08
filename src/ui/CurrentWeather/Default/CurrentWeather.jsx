@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import { useCitiesStore } from '../../../stores/weatherStore' // путь поправь под себя
+import { useCitiesStore } from '../../../stores/weatherStore'
 import './CurrentWeather.css'
 import { CurrentWeatherMini } from '../Mini/CurrentWeatherMini'
 
@@ -19,7 +19,6 @@ export const CurrentWeather = ({ weather, unit }) => {
 
     function onScroll() {
       const offset = scrollEl.scrollTop
-
       setIsVisible(offset < 120)
     }
 
@@ -29,24 +28,27 @@ export const CurrentWeather = ({ weather, unit }) => {
     return () => scrollEl.removeEventListener('scroll', onScroll)
   }, [activeIndex])
 
+  const temp = unit === 'C' ? weather.temp.c : weather.temp.f
+
+  const feels = unit === 'C' ? weather.temp.feels_c : weather.temp.feels_f
+
   return (
     <>
       <div ref={bigRef} className="current-weather-big">
         <h3>{weather.country}</h3>
         <h2>{weather.name}</h2>
-        <h1>{unit === 'C' ? Math.round(weather.temp_c) : Math.round(weather.temp_f)}°</h1>
+
+        <h1>{Math.round(temp)}°</h1>
 
         <div className="condition">
-          <img src={weather.icon} alt={weather.condition} />
-          <p>{weather.condition}</p>
+          <img src={weather.condition.icon} alt={weather.condition.text} />
+          <p>{weather.condition.text}</p>
         </div>
 
         <p className="feels">
-          {Math.round(weather.feelsLike) === Math.round(weather.temp)
+          {Math.round(temp) === Math.round(feels)
             ? 'Совпадает с реальной температурой'
-            : `Ощущается как: ${
-                unit === 'C' ? Math.round(weather.feelsLike_c) : Math.round(weather.feelsLike_f)
-              }°${unit}`}
+            : `Ощущается как: ${Math.round(feels)}°${unit}`}
         </p>
       </div>
 

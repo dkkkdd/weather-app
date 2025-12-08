@@ -12,7 +12,6 @@ import { Details } from './ui/Details.jsx'
 
 import { useBackground } from './hooks/useBackground.jsx'
 
-import { Loader } from './ui/Loader/Loader.jsx'
 import { useCitiesStore } from './stores/weatherStore.js'
 import { CitySwiper } from './ui/CitySwiper.jsx'
 import { CityDots } from './ui/CityDots.jsx'
@@ -26,8 +25,14 @@ export default function App() {
 
   const { activeCity, setActiveCity } = useCitiesStore()
 
-  const { currentWeather, forecastData, error, searchHints, searchHintsByName, loadWeather } =
-    useWeather()
+  const {
+    current: currentWeather,
+    forecast: forecastData,
+    error,
+    hints,
+    searchHints,
+    loadWeather,
+  } = useWeather()
 
   useEffect(() => {
     localStorage.setItem('unit', unit)
@@ -37,8 +42,6 @@ export default function App() {
     setReady(false)
 
     await loadWeather(city)
-
-    // даём фону и эффектам отрендериться
     await new Promise((r) => setTimeout(r, 50))
 
     setReady(true)
@@ -50,26 +53,28 @@ export default function App() {
   }, [activeCity])
 
   useBackground({ currentWeather })
-  const today = forecastData?.forecast[0]
+
+  // Новый today
+  const today = forecastData?.days?.[0]
+  const nextDay = forecastData?.days?.[1]
 
   return (
     <>
-      <Effects currentWeather={currentWeather} />
-      <BurgerBtn openBurger={openBurger} setOpenBurger={setOpenBurger}></BurgerBtn>
-      <main className="layout">
-        {openBurger && (
-          <aside className="sidebar">
-            <SearchPanel
-              searchHints={searchHints}
-              searchHintsByName={searchHintsByName}
-              loadWeather={loadWeather}
-              currentWeather={currentWeather}
-              setOpenBurger={setOpenBurger}
-            />
-            <ChangeUnit unit={unit} setUnit={setUnit} />
-            <AsideBar setActiveCity={setActiveCity} setOpenBurger={setOpenBurger}></AsideBar>
-          </aside>
-        )}
+      <Effects className={`fade-screen ${ready ? 'show' : ''}`} currentWeather={currentWeather} />
+      <BurgerBtn openBurger={openBurger} setOpenBurger={setOpenBurger} />
+
+      <main className={`layout ${openBurger ? 'menu-open' : ''}`}>
+        <aside className="sidebar">
+          <SearchPanel
+            searchHints={hints}
+            searchHintsByName={searchHints}
+            loadWeather={loadWeather}
+            currentWeather={currentWeather}
+            setOpenBurger={setOpenBurger}
+          />
+          <ChangeUnit unit={unit} setUnit={setUnit} />
+          <AsideBar setActiveCity={setActiveCity} setOpenBurger={setOpenBurger} />
+        </aside>
 
         <section className="content-wrapper">
           <CityDots />
@@ -83,18 +88,15 @@ export default function App() {
                   {currentWeather && <CurrentWeather weather={currentWeather} unit={unit} />}
 
                   <div className="app">
-                    {forecastData && (
+                    {forecastData && today && (
                       <>
                         <div className="main-weather">
-                          <Hours
-                            data={today}
-                            nextDay={forecastData.forecast[1].hours}
-                            unit={unit}
-                          />
-                          <Forecast weather={forecastData} unit={unit} />
+                          <Hours day={today} nextDay={nextDay} unit={unit} />
+                          <Forecast forecast={forecastData} unit={unit} />
                           <MoonSun data={today} />
                         </div>
-                        <Details today={today} unit={unit} />
+
+                        <Details today={currentWeather} unit={unit} />
                       </>
                     )}
                   </div>

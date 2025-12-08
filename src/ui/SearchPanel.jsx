@@ -13,7 +13,6 @@ export function SearchPanel({ searchHints, searchHintsByName, loadWeather, setOp
   const searchRef = useRef(null)
   const typingTimeout = useRef(null)
 
-  // закрытие по клику
   useEffect(() => {
     function handleClickOutside(e) {
       if (searchRef.current && !searchRef.current.contains(e.target)) {
@@ -24,28 +23,25 @@ export function SearchPanel({ searchHints, searchHintsByName, loadWeather, setOp
     return () => document.removeEventListener('click', handleClickOutside)
   }, [])
 
-  // НОРМАЛИЗАЦИЯ → делаем key из названия
-  const normalizeKey = (label) => label.trim().toLowerCase()
-
   async function handleSearch() {
     const query = searchValue.trim()
-
     if (!query) return
 
-    const label = searchHints.length > 0 ? searchHints[0].name : query
-    const key = normalizeKey(label)
+    // Если есть подсказки → берём первую
+    const hint = searchHints[0]
+
+    const key = hint ? hint.key : query.toLowerCase().replace(/\s+/g, '-')
+    const label = hint ? hint.label : query
 
     addCity({ key, label })
 
-    // ждём microtask, чтобы Zustand обновил список
     await Promise.resolve()
 
     setActiveCity(key)
     await loadWeather(key)
 
-    setShowHints(false)
-
     setSearchValue('')
+    setShowHints(false)
     setOpenBurger(false)
   }
 
@@ -61,7 +57,7 @@ export function SearchPanel({ searchHints, searchHintsByName, loadWeather, setOp
           typingTimeout.current = setTimeout(async () => {
             await searchHintsByName(value)
             setShowHints(true)
-          }, 500)
+          }, 400)
         }}
         onSearch={handleSearch}
       />
@@ -69,20 +65,18 @@ export function SearchPanel({ searchHints, searchHintsByName, loadWeather, setOp
       {showHints && searchHints.length > 0 && (
         <ListOfHints
           value={searchHints}
-          onClick={async (label) => {
-            const key = normalizeKey(label)
+          onClick={async (item) => {
+            const { key, label } = item
 
             addCity({ key, label })
+
             await Promise.resolve()
 
-            setSearchValue(label)
             setActiveCity(key)
-
             await loadWeather(key)
 
-            setShowHints(false)
-            //-------------
             setSearchValue('')
+            setShowHints(false)
             setOpenBurger(false)
           }}
         />

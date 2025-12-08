@@ -1,4 +1,6 @@
 import './style.css'
+import { registerSW } from 'virtual:pwa-register'
+registerSW()
 import React, { act } from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App.jsx'

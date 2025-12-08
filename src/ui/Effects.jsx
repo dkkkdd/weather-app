@@ -1,6 +1,6 @@
+// ui/Effects.jsx
 import { useState, useEffect } from 'react'
-
-import Rain from './WeatherEffects/Rain/Rain'
+import RainWithClouds from './WeatherEffects/Rain/Rain.jsx'
 import Snow from './WeatherEffects/Snow/Snow.jsx'
 import Storm from './WeatherEffects/Storm/Storm.jsx'
 
@@ -8,9 +8,9 @@ export const Effects = ({ currentWeather }) => {
   const [effect, setEffect] = useState(null)
 
   useEffect(() => {
-    if (!currentWeather) return
+    if (!currentWeather || !currentWeather.condition) return
 
-    const c = currentWeather.condition.toLowerCase()
+    const c = currentWeather.condition.text.toLowerCase()
 
     if (c.includes('гроз')) setEffect('lightning')
     else if (c.includes('дожд')) setEffect('rain')
@@ -26,7 +26,7 @@ export const Effects = ({ currentWeather }) => {
 
       {effect === 'snow' && <Snow />}
       {effect === 'lightning' && <Storm />}
-      {effect === 'rain' && <Rain lightning={effect === 'lightning'} />}
+      {effect === 'rain' && <RainWithClouds lightning={effect === 'lightning'} />}
     </>
   )
 }

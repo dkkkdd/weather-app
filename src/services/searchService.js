@@ -1,13 +1,18 @@
-import { fetchData } from '../api/weather'
+import { weatherClient } from '../api/weather'
 
-export const fetchSearchCityWeather = async (city) => {
-  if (!city.trim()) city = 'auto:ip'
+export const SearchService = {
+  async search(query) {
+    if (!query.trim()) return []
 
-  const raw = await fetchData(city, 'search')
+    const raw = await weatherClient.request('search.json', {
+      q: query,
+      lang: 'ru',
+    })
 
-  return raw.map((item) => ({
-    id: item.id,
-    name: item.name,
-    country: item.country,
-  }))
+    return raw.map((item) => ({
+      id: item.id,
+      label: `${item.name}, ${item.country}`,
+      key: item.name.toLowerCase().replace(/\s+/g, '-'),
+    }))
+  },
 }

@@ -1,29 +1,29 @@
 import './Forecast.css'
 import { formatDate } from '../../utils/formatDate'
 
-export const Forecast = ({ weather, unit }) => {
+export const Forecast = ({ forecast, unit }) => {
   return (
     <div className="forecast">
       <div className="forecast-cards">
-        {weather.forecast.map((item) => (
-          <div key={item.date} className="forecast-card">
-            <h3>{formatDate(item.date)}</h3>
+        {forecast.days.map((day) => (
+          <div key={day.date} className="forecast-card">
+            <h3>{formatDate(day.date)}</h3>
+
             <div className="weather-icon">
-              <img src={item.icon} alt={item.condition} className="forecast-icon" />
-              <p>{item.will_it_rain === 1 ? item.daily_chance_of_rain + '%' : ''}</p>
+              <img src={day.condition.icon} />
+              <p>{day.rainChance ? `${day.rainChance}%` : ''}</p>
             </div>
+
             <div className="temp-info">
-              {unit === 'C' ? Math.round(item.minTemp_c) : Math.round(item.minTemp_f)}°
+              {Math.round(unit === 'C' ? day.temp.min_c : day.temp.min_f)}°
               <input
                 type="range"
-                name="temperature"
-                id="temperature"
-                min={unit === 'C' ? item.minTemp_c : item.minTemp_f}
-                max={unit === 'C' ? item.maxTemp_c : item.maxTemp_f}
-                value={unit === 'C' ? item.avgTemp_c : item.avgTemp_f}
                 disabled
+                min={unit === 'C' ? day.temp.min_c : day.temp.min_f}
+                max={unit === 'C' ? day.temp.max_c : day.temp.max_f}
+                value={unit === 'C' ? day.temp.avg_c : day.temp.avg_f}
               />
-              {unit === 'C' ? Math.round(item.maxTemp_c) : Math.round(item.maxTemp_f)}°
+              {Math.round(unit === 'C' ? day.temp.max_c : day.temp.max_f)}°
             </div>
           </div>
         ))}

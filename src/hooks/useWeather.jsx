@@ -1,38 +1,51 @@
 import { useState } from 'react'
-import { fetchCityWeather } from '../services/weatherService'
-import { fetchForecastWeather } from '../services/forecastService'
-import { fetchSearchCityWeather } from '../services/searchService'
+import { WeatherAPI } from '../services/index'
 
 export function useWeather() {
-  const [currentWeather, setCurrentWeather] = useState(null)
-  const [forecastData, setForecastData] = useState(null)
-  const [searchHints, setSearchHints] = useState([])
+  const [current, setCurrent] = useState(null)
+  const [forecast, setForecast] = useState(null)
+  const [hints, setHints] = useState([])
   const [error, setError] = useState(null)
-  async function searchHintsByName(name) {
-    if (!name.trim()) return setSearchHints([])
+  let controller = null
 
-    const hints = await fetchSearchCityWeather(name)
-    setSearchHints(hints)
-  }
+  // async function loadWeather(city) {
+  //   try {
+  //     const [c, f] = await Promise.all([WeatherAPI.getCurrent(city), WeatherAPI.getForecast(city)])
 
+  //     setCurrent(c)
+  //     setForecast(f)
+  //     setError(null)
+  //   } catch (e) {
+  //     setError(e.message)
+  //   }
+  // }
   async function loadWeather(city) {
     try {
-      const weather = await fetchCityWeather(city)
-      const forecast = await fetchForecastWeather(city)
+      if (controller) controller.abort()
+      controller = new AbortController()
 
-      setCurrentWeather(weather)
-      setForecastData(forecast)
-    } catch (err) {
-      setError(err.message)
+      const [c, f] = await Promise.all([WeatherAPI.getCurrent(city), WeatherAPI.getForecast(city)])
+
+      setCurrent(c)
+      setForecast(f)
+      setError(null)
+    } catch (e) {
+      if (e.name === 'AbortError') return
+      setError(e.message)
     }
   }
 
+  async function searchHints(query) {
+    const result = await WeatherAPI.search(query)
+    setHints(result)
+  }
+
   return {
-    currentWeather,
-    forecastData,
+    current,
+    forecast,
     error,
+    hints,
     searchHints,
-    searchHintsByName,
     loadWeather,
   }
 }

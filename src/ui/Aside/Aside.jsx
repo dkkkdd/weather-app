@@ -29,9 +29,6 @@ export const AsideBar = ({ setActiveCity, setOpenBurger }) => {
               onClick={(e) => {
                 e.stopPropagation()
                 removeCity(c.key)
-                if (window.innerWidth < 1200) {
-                  setOpenBurger(false)
-                }
               }}
             >
               x

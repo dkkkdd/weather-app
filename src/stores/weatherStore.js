@@ -1,32 +1,27 @@
 import { create } from 'zustand'
 
 export const useCitiesStore = create((set, get) => ({
-  // МАССИВ ГОРОДОВ ТЕПЕРЬ ОБЪЕКТЫ, А НЕ СТРОКИ
   cities: (() => {
     const saved = JSON.parse(localStorage.getItem('cities'))
-    if (!saved || saved.length === 0) {
-      return [{ key: 'auto:ip', label: 'Моя локация' }]
-    }
-    return saved
+    return saved?.length ? saved : [{ key: 'auto:ip', label: 'Моя локация' }]
   })(),
 
   activeCity: localStorage.getItem('activeCity') || 'auto:ip',
 
-  addCity: (cityObj) => {
-    const { key, label } = cityObj
+  addCity: ({ key, label }) => {
     const cities = get().cities
-    let updated = []
 
-    const exists = cities.some((c) => c.key === key)
-    updated = [...cities, { key, label }]
-    if (exists) return
-    if (cities.length > 9) {
-      cities.pop()
-      updated = [...cities, { key, label }]
-    }
+    // 1 — если город уже есть → ничего не делаем
+    if (cities.some((c) => c.key === key)) return
 
-    set({ cities: updated })
-    localStorage.setItem('cities', JSON.stringify(updated))
+    // 2 — вставляем новый город НАЧАЛО списка (как нормальное "последнее добавленное")
+    const updated = [{ key, label }, ...cities]
+
+    // 3 — ограничиваем список 10 городами
+    const trimmed = updated.slice(0, 10)
+
+    set({ cities: trimmed })
+    localStorage.setItem('cities', JSON.stringify(trimmed))
   },
 
   removeCity: (key) => {
@@ -35,46 +30,35 @@ export const useCitiesStore = create((set, get) => ({
 
     if (key === 'auto:ip') return
 
-    const index = cities.findIndex((c) => c.key === key)
-    let updated = cities.filter((c) => c.key !== key)
+    const updated = cities.filter((c) => c.key !== key)
 
-    // если всё удалили → остаётся только авто-локация
+    // если список пуст → восстанавливаем авто-локацию
     if (updated.length === 0) {
-      updated = [{ key: 'auto:ip', label: 'Моя локация' }]
-      set({ cities: updated, activeCity: 'auto:ip' })
-      localStorage.setItem('cities', JSON.stringify(updated))
+      const fallback = [{ key: 'auto:ip', label: 'Моя локация' }]
+      set({ cities: fallback, activeCity: 'auto:ip' })
+      localStorage.setItem('cities', JSON.stringify(fallback))
       localStorage.setItem('activeCity', 'auto:ip')
       return
     }
 
-    // удалили НЕ активный
+    // если удалён НЕ активный
     if (active !== key) {
       set({ cities: updated })
       localStorage.setItem('cities', JSON.stringify(updated))
       return
     }
 
-    // удалили активный → выбираем новый активный
-    let newIndex = index - 1
-    if (newIndex < 0) newIndex = 0
-
-    const newActiveKey = updated[newIndex].key
+    // удалён активный → выбираем ближайший следующий
+    const nextActive = updated[0].key
 
     set({
       cities: updated,
-      activeCity: newActiveKey,
+      activeCity: nextActive,
     })
 
     localStorage.setItem('cities', JSON.stringify(updated))
-    localStorage.setItem('activeCity', newActiveKey)
+    localStorage.setItem('activeCity', nextActive)
   },
-  // updateCityLabel: (key, label) => {
-  //   const cities = get().cities
-  //   const updated = cities.map((c) => (c.key === key ? { ...c, label } : c))
-
-  //   set({ cities: updated })
-  //   localStorage.setItem('cities', JSON.stringify(updated))
-  // },
 
   setActiveCity: (key) => {
     set({ activeCity: key })

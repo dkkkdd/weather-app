@@ -7,19 +7,19 @@ export const MoonSun = ({ data }) => {
       <div className="card-content moon-sun">
         <div className="moon-sun-item">
           <h3>Восход солнца</h3>
-          <p>{data.sunRise}</p>
+          <p>{data.sunrise}</p>
         </div>
         <div className="moon-sun-item">
           <h3>Закат солнца</h3>
-          <p>{data.sunSet}</p>
+          <p>{data.sunset}</p>
         </div>
         <div className="moon-sun-item">
           <h3>Восход луны</h3>
-          <p>{data.moonRise}</p>
+          <p>{data.moonrise}</p>
         </div>
         <div className="moon-sun-item">
           <h3>Закат луны</h3>
-          <p>{data.moonSet}</p>
+          <p>{data.moonset}</p>
         </div>
       </div>
     </div>

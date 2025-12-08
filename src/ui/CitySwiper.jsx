@@ -26,6 +26,8 @@ export function CitySwiper({ children }) {
     <Swiper
       speed={400}
       nested={true}
+      noSwiping={true}
+      noSwipingClass="swiper-no-swiping"
       onSwiper={(sw) => (swiperRef.current = sw)}
       initialSlide={initialIndex}
       onSlideChangeTransitionEnd={(sw) => {

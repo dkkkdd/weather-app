@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react'
 import './Rain.css'
 
-export default function Rain({ lightning = false }) {
+export function Rain({ lightning = false }) {
   const canvasRef = useRef(null)
 
   useEffect(() => {
@@ -112,4 +112,13 @@ export default function Rain({ lightning = false }) {
   }, [lightning])
 
   return <canvas ref={canvasRef} className="ultra-rain-canvas" />
+}
+export default function RainWithClouds() {
+  return (
+    <div className="weather-layer">
+      <div className="cloud-layer layer1" />
+
+      <Rain />
+    </div>
+  )
 }
