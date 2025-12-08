@@ -1,0 +1,56 @@
+.cw-mini {
+  position: fixed;
+  top: 0.8em;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 9999;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6em;
+
+  padding: 0.6em 1em;
+  border-radius: 16px;
+
+  backdrop-filter: blur(22px);
+  background: rgba(255, 255, 255, 0.18);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+
+  font-size: 0.9em;
+  animation: fadeMini 0.25s ease-in-out;
+}
+
+.cw-mini img {
+  width: 26px;
+  height: 26px;
+}
+
+.cw-mini-info {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.6em;
+}
+
+.cw-mini-city {
+  font-weight: 600;
+}
+
+@keyframes fadeMini {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+@media (max-width: 600px) {
+  .cw-mini {
+    width: 80%;
+  }
+}

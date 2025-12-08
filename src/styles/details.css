@@ -1,0 +1,54 @@
+/* .details {
+  display: grid;
+  gap: 1.2em;
+  grid-template-columns: 1fr;
+
+}
+
+.details .wide {
+  grid-column: 1 / -1;
+}
+
+@media (min-width: 350px) {
+  .details {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (min-width: 900px) {
+  .details {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+ */
+.details {
+  display: grid;
+  gap: 1.2em;
+  grid-template-columns: 1fr; /* дефолт — одна колонка */
+}
+
+/* ===== Мобилки / узкие экраны ===== */
+@media (max-width: 599px) {
+  .details {
+    grid-template-columns: repeat(2, minmax(0, 1fr)); /* две колонки */
+  }
+
+  /* первая карточка (компас) — на всю ширину */
+  .details > *:first-child {
+    grid-column: 1 / -1;
+  }
+}
+
+/* ===== Широкие экраны ===== */
+@media (min-width: 600px) {
+  .details {
+    grid-template-columns: repeat(3, minmax(0, 1fr)); /* три колонки */
+    align-items: stretch;
+  }
+
+  /* первая карточка (компас) — 2/3 ширины, одна строка */
+  .details > *:first-child {
+    grid-column: span 2; /* занимает 2 из 3 колонок */
+    grid-row: auto;
+  }
+}

@@ -10,17 +10,14 @@ export default defineConfig([
     files: ['**/*.{js,mjs,cjs}'],
     plugins: {
       js,
-      prettier: pluginPrettier, // ← добавляем плагин
+      prettier: pluginPrettier,
     },
-    extends: [
-      'js/recommended',
-      prettier, // ← добавляем конфиг prettier
-    ],
+    extends: ['js/recommended', prettier],
     languageOptions: {
       globals: globals.browser,
     },
     rules: {
-      'prettier/prettier': 'error', // ← заставляет соблюдать форматирование
+      'prettier/prettier': 'error',
       'no-unused-vars': 'warn',
       'no-undef': 'error',
     },

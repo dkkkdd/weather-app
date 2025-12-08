@@ -1,0 +1,8 @@
+.change-unit {
+  position: absolute;
+  top: 1em;
+  right: 1em;
+  z-index: 999;
+
+  background-color: rgba(176, 176, 176, 0.409);
+}

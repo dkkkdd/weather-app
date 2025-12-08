@@ -1,0 +1,31 @@
+/* Переопределяем layout только в карточке ветра */
+.wind-card .wind-content {
+  display: grid;
+  grid-template-columns: 10em 1fr;
+  align-items: center;
+  width: 100%;
+  gap: 1.5em;
+}
+
+/* Контейнер с текстом */
+.wind-stats {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6em;
+  width: 100%;
+}
+
+/* Ряд с двумя значениями (как в Apple Weather) */
+.wind-stats .row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1rem;
+  opacity: 0.9;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  padding-bottom: 4px;
+}
+@media (max-width: 420px) {
+  .wind-card .wind-content {
+    grid-template-columns: 5em 1fr;
+  }
+}

@@ -1,0 +1,31 @@
+.city-dots {
+  position: fixed;
+  bottom: 1.2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 9999;
+
+  display: flex;
+  gap: 8px;
+
+  padding: 8px 16px;
+  border-radius: 20px;
+
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(15px);
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+
+  background: rgba(255, 255, 255, 0.4);
+  border-radius: 50%;
+  transition: 0.2s ease;
+  cursor: pointer;
+}
+
+.dot.active {
+  background: white;
+}

@@ -103,8 +103,3 @@ blockquote::after {
 button {
   cursor: pointer;
 }
-
-/* Скрываем скролл — по желанию (убери если не нужно) */
-/* ::-webkit-scrollbar {
-  display: none;
-} */

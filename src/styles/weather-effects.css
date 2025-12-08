@@ -1,0 +1,32 @@
+.weather-effects {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  mix-blend-mode: screen;
+  background-size: contain;
+  width: 100%;
+}
+
+.weather-effects.clouds {
+  background: url('/animation/clouds.png') repeat-x;
+  animation: moveSm 120s linear infinite;
+  opacity: 0.65;
+  top: -14em;
+}
+
+.weather-effects.fog {
+  background: url('/animation/fogs.png') repeat-x;
+  background-size: cover;
+  animation: moveSm 120s linear infinite;
+  opacity: 0.95;
+  top: -14em;
+}
+@keyframes moveSm {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: -2050px 0;
+  }
+}

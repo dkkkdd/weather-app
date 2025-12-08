@@ -4,6 +4,7 @@
   padding: 0.5em 1em;
   border-radius: 1em;
   backdrop-filter: blur(25px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
 }
 .forecast-card {
   display: grid;
@@ -52,8 +53,8 @@ input[type='range']::-webkit-slider-runnable-track {
 /* Thumb */
 input[type='range']::-webkit-slider-thumb {
   -webkit-appearance: none;
-  height: 0.3em; /* <<< меньше */
-  width: 0.3em; /* <<< меньше */
+  height: 0.5em;
+  width: 0.5em;
   margin-top: -1px;
   background: #fff;
   border-radius: 50%;

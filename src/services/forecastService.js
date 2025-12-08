@@ -1,46 +1,45 @@
-import { fetchData } from '../api/weather'
+import { weatherClient } from '../api/weather'
 
-export const fetchForecastWeather = async (city) => {
-  const raw = await fetchData(city, 'forecast')
+export const ForecastService = {
+  async getForecast(city, days = 7) {
+    const raw = await weatherClient.request('forecast.json', {
+      q: city,
+      days,
+      lang: 'ru',
+    })
 
-  return {
-    forecast: raw.forecast.forecastday.map((item) => ({
-      date: item.date,
-      avgTemp: item.day.avgtemp_c,
-      moonRise: item.astro.moonrise,
-      moonSet: item.astro.moonset,
-      sunRise: item.astro.sunrise,
-      sunSet: item.astro.sunset,
-      condition: item.day.condition.text,
-      icon: item.day.condition.icon,
-      rainChance: item.day.daily_chance_of_rain,
-      minTemp: item.day.mintemp_c,
-      maxTemp: item.day.maxtemp_c,
-      hours: item.hour.map((hour) => ({
-        time: hour.time,
-        temp: hour.temp_c,
-        condition: hour.condition.text,
-        icon: hour.condition.icon,
+    return {
+      location: {
+        name: raw.location.name,
+        country: raw.location.country,
+      },
+      days: raw.forecast.forecastday.map((day) => ({
+        date: day.date,
+        temp: {
+          min_c: day.day.mintemp_c,
+          max_c: day.day.maxtemp_c,
+          avg_c: day.day.avgtemp_c,
+          min_f: day.day.mintemp_f,
+          max_f: day.day.maxtemp_f,
+          avg_f: day.day.avgtemp_f,
+        },
+        condition: {
+          text: day.day.condition.text,
+          icon: day.day.condition.icon,
+        },
+        sunrise: day.astro.sunrise,
+        sunset: day.astro.sunset,
+        moonrise: day.astro.moonrise,
+        moonset: day.astro.moonset,
+        rainChance: day.day.daily_chance_of_rain,
+        hours: day.hour.map((h) => ({
+          time: h.time,
+          temp_c: h.temp_c,
+          temp_f: h.temp_f,
+          condition: h.condition.text,
+          icon: h.condition.icon,
+        })),
       })),
-      will_it_rain: item.day.daily_will_it_rain,
-      daily_chance_of_rain: item.day.daily_chance_of_rain,
-      vis_km: raw.current.vis_km,
-      humidity: raw.current.humidity,
-      pressure: raw.current.pressure_in,
-      dewpoint: raw.current.dewpoint_c,
-      uv: raw.current.uv,
-      precip_mm: raw.current.precip_mm,
-      vis_miles: raw.current.vis_miles,
-      wind_dir: raw.current.wind_dir,
-      wind_degree: raw.current.wind_degree,
-      wind_kph: raw.current.wind_kph,
-      wind_mph: raw.current.wind_mph,
-      gust_kph: raw.current.gust_kph,
-      gust_mph: raw.current.gust_mph,
-      windchill_c: raw.current.windchill_c,
-      windchill_f: raw.current.windchill_f,
-    })),
-    name: raw.location.name,
-    country: raw.location.country,
-  }
+    }
+  },
 }
