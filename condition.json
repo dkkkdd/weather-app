@@ -1,14 +1,13 @@
 {
-  "Ясно": "clear.jpg",
-  "Солнечно": "sunny.jpg",
-  "Переменная облачность": "little-cloudy.jpg",
-  "Пасмурно": "cloudy.jpg",
-  "Дождь": "rain.jpg",
-  "Небольшой дождь": "light-rain.jpg",
-  "Местами дождь": "light-rain.jpg",
-  "Гроза": "thunder.webp",
-  "Снег": "snow.jpg",
-  "Небольшой снег": "snow.jpg",
-  "Дымка": "smog.jpg",
-  "Туман": "foggy.jpg"
+  "Солнечно": "images/sunny.jpg",
+  "Пасмурно": "images/cloudy.jpg",
+  "Дождь": "images/light-rain.jpg",
+  "Гроза": "images/thunder.webp",
+  "В отдельных районах умеренный или сильный дождь с грозой": "images/thunder.webp",
+  "Снег": "images/foggy.jpg",
+  "Небольшой снег": "images/foggy.jpg",
+  "Туман": "images/foggy.jpg",
+
+  "Ясно": "images/clear.jpg",
+  "Гроза ночная": "images/night-storm.jpg"
 }
