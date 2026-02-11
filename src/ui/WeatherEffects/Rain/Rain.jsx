@@ -19,19 +19,16 @@ export function Rain({ lightning = false }) {
       const cssWidth = window.innerWidth
       const cssHeight = window.innerHeight
 
-      // реальный размер буфера с учётом DPR
       canvas.width = cssWidth * dpr
       canvas.height = cssHeight * dpr
 
-      // рисуем в координатах CSS-пикселей
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0)
 
       W = cssWidth
       H = cssHeight
 
-      // ========== дождь ==========
       rainDrops = []
-      const COUNT = Math.floor(W * 0.18) // плотность
+      const COUNT = Math.floor(W * 0.18)
 
       for (let i = 0; i < COUNT; i++) {
         rainDrops.push({
@@ -43,7 +40,6 @@ export function Rain({ lightning = false }) {
         })
       }
 
-      // ========== редкие streaks ==========
       streaks = []
       for (let i = 0; i < 6; i++) {
         streaks.push({
@@ -60,7 +56,6 @@ export function Rain({ lightning = false }) {
     function draw() {
       ctx.clearRect(0, 0, W, H)
 
-      // обычные капли
       ctx.lineCap = 'round'
       ctx.lineWidth = 1
       ctx.strokeStyle = 'rgba(255,255,255,0.32)'
@@ -80,7 +75,6 @@ export function Rain({ lightning = false }) {
         }
       }
 
-      // длинные streaks
       for (let s of streaks) {
         ctx.strokeStyle = `rgba(255,255,255,${s.opacity})`
         ctx.lineWidth = 1.1

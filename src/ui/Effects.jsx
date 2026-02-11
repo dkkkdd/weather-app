@@ -1,4 +1,3 @@
-// ui/Effects.jsx
 import { useState, useEffect } from 'react'
 import RainWithClouds from './WeatherEffects/Rain/Rain.jsx'
 import Snow from './WeatherEffects/Snow/Snow.jsx'

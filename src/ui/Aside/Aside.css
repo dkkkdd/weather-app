@@ -66,14 +66,12 @@
   height: 100%;
 }
 
-/* swiper должен быть ВНУТРИ layout и НЕ absolute */
 .swiper-container-fixed {
   width: 100%;
   height: 100%;
 }
 
 @media (max-width: 1200px) {
-  /* Грид становится одноколонным */
   .layout {
     grid-template-columns: 1fr;
     position: relative;
@@ -83,7 +81,6 @@
     pointer-events: none;
   }
 
-  /* ----- FULLSCREEN SIDEBAR ----- */
   .sidebar {
     position: fixed;
     top: 0;
@@ -93,12 +90,10 @@
     height: 100%;
     z-index: 200;
 
-    /* скрыт */
     transform: translateX(-100%);
     transition: transform 0.35s ease;
   }
 
-  /* когда меню открыто */
   .layout.menu-open .sidebar {
     transform: translateX(0);
   }

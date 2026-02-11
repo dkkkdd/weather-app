@@ -37,7 +37,6 @@
   color: var(--text-color);
 }
 
-/* Мобилка */
 @media (max-width: 480px) {
   .moon-sun {
     grid-template-columns: 1fr;
@@ -48,7 +47,6 @@
   }
 }
 
-/* Планшет */
 @media (min-width: 480px) and (max-width: 900px) {
   .moon-sun {
     grid-template-columns: repeat(2, 1fr);

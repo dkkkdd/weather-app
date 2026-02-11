@@ -9,13 +9,11 @@ export function setCache(key, data, ttlMs) {
 }
 
 export function getCache(key) {
-  // 1) проверяем память
   const fromMemory = memoryCache.get(key)
   if (fromMemory && fromMemory.expires > Date.now()) {
     return fromMemory.data
   }
 
-  // 2) проверяем localStorage
   const raw = localStorage.getItem(key)
   if (!raw) return null
 

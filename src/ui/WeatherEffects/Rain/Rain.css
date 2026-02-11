@@ -1,8 +1,8 @@
 .ultra-rain-canvas {
   position: fixed;
   inset: 0;
-  width: 100vw; /* не менять */
-  height: 100vh; /* не менять */
+  width: 100vw;
+  height: 100vh;
 
   pointer-events: none;
 }
@@ -13,7 +13,6 @@
   pointer-events: none;
 }
 
-/* ОБЩИЙ СТИЛЬ ТУЧ */
 .cloud-layer {
   position: absolute;
   top: 0;
@@ -21,18 +20,16 @@
   height: 100%;
   background-repeat: repeat-x;
   background-size: cover;
-  opacity: 0.55; /* регулируешь под вкус */
+  opacity: 0.55;
   animation: moveClouds linear infinite;
 }
 
-/* КАРТИНКИ ТУЧ — ЛЮБЫЕ PNG c мягкими краями */
 .layer1 {
   background-image: url('/animation/rainy-clouds.png');
   animation-duration: 105s;
   opacity: 0.85;
 }
 
-/* ПЛАВНОЕ ДВИЖЕНИЕ НА GPU */
 @keyframes moveClouds {
   from {
     transform: translateX(0);

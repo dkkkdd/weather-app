@@ -74,7 +74,7 @@ body {
   height: 100%;
   background-color: var(--back-color);
   color: var(--text-color);
-  overflow: hidden; /* Мы сами контролируем скролл внутри page-scroll */
+  overflow: hidden;
 }
 
 #root {
@@ -87,7 +87,6 @@ body {
   height: 100%;
 }
 
-/* SINGLE SCROLL AREA */
 .page-scroll {
   overflow-y: auto;
   scrollbar-width: none;

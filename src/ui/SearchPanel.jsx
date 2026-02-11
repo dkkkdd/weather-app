@@ -27,7 +27,6 @@ export function SearchPanel({ searchHints, searchHintsByName, loadWeather, setOp
     const query = searchValue.trim()
     if (!query) return
 
-    // Если есть подсказки → берём первую
     const hint = searchHints[0]
 
     const key = hint ? hint.key : query.toLowerCase().replace(/\s+/g, '-')

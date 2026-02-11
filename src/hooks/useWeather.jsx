@@ -8,17 +8,6 @@ export function useWeather() {
   const [error, setError] = useState(null)
   let controller = null
 
-  // async function loadWeather(city) {
-  //   try {
-  //     const [c, f] = await Promise.all([WeatherAPI.getCurrent(city), WeatherAPI.getForecast(city)])
-
-  //     setCurrent(c)
-  //     setForecast(f)
-  //     setError(null)
-  //   } catch (e) {
-  //     setError(e.message)
-  //   }
-  // }
   async function loadWeather(city) {
     try {
       if (controller) controller.abort()
