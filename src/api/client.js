@@ -25,12 +25,10 @@ export class ApiClient {
 
       return await res.json()
     } catch (err) {
-      // если есть ретраи → пробуем ещё раз
       if (retries > 0) {
         return this.request(path, params, retries - 1)
       }
 
-      // ретраев больше нет → кидаем ошибку
       throw err
     }
   }

@@ -1,30 +1,7 @@
-/* .details {
-  display: grid;
-  gap: 1.2em;
-  grid-template-columns: 1fr;
-
-}
-
-.details .wide {
-  grid-column: 1 / -1;
-}
-
-@media (min-width: 350px) {
-  .details {
-    grid-template-columns: 1fr 1fr;
-  }
-}
-
-@media (min-width: 900px) {
-  .details {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
- */
 .details {
   display: grid;
   gap: 1.2em;
-  grid-template-columns: 1fr; /* дефолт — одна колонка */
+  grid-template-columns: 1fr;
 }
 
 /* ===== Мобилки / узкие экраны ===== */

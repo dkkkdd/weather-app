@@ -12,7 +12,7 @@ export const WeatherAPI = {
     if (cached) return cached
 
     const data = await WeatherService.getCurrent(city)
-    setCache(key, data, 2 * 60 * 1000) // 2 мин
+    setCache(key, data, 2 * 60 * 1000)
     return data
   },
 
@@ -23,7 +23,7 @@ export const WeatherAPI = {
     if (cached) return cached
 
     const data = await ForecastService.getForecast(city)
-    setCache(key, data, 30 * 60 * 1000) // 30 мин
+    setCache(key, data, 30 * 60 * 1000)
     return data
   },
 

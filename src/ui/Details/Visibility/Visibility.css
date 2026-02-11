@@ -1,13 +1,8 @@
-/* Общий контейнер */
 .visibility {
   display: flex;
-
-  /* text-align: center; */
-
   gap: 0.5em;
 }
 
-/* Две цифры: км и мили */
 .vis-values {
   display: flex;
   justify-content: center;
@@ -22,14 +17,12 @@
   font-weight: 700;
 }
 
-/* качество — Отл / Хорошая / Плохая */
 .vis-quality {
   font-size: 1em;
   font-weight: 700;
   opacity: 0.9;
 }
 
-/* описание */
 .vis-description {
   font-size: 0.9em;
   opacity: 0.75;

@@ -26,17 +26,17 @@ export default function Snow() {
       H = cssH
 
       flakes = []
-      const COUNT = Math.floor(W * 0.07) // немного больше, но не много
+      const COUNT = Math.floor(W * 0.07)
 
       for (let i = 0; i < COUNT; i++) {
         flakes.push({
           x: Math.random() * W,
           y: Math.random() * H,
-          r: 1 + Math.random() * 1.2, // 1–2.2px (норм мелкий снег)
+          r: 1 + Math.random() * 1.2,
           speed: 0.35 + Math.random() * 0.9,
           drift: 0.15 + Math.random() * 0.25,
           phase: Math.random() * 360,
-          alpha: 0.35 + Math.random() * 0.2, // мягкая яркость, но видно
+          alpha: 0.35 + Math.random() * 0.2,
         })
       }
     }

@@ -1,134 +1,105 @@
-# Weather App — Command Workflow Simulation
+# Weather App
 
-Учебный проект, созданный для имитации реальной командной разработки: архитектура, Git-процессы, код-ревью, ветвление и совместная работа.
+(Command Workflow Simulation)
 
-Проект использует современный стек и архитектурный подход, максимально приближенный к продакшну.
+A training project created to simulate a real team development environment: architecture, Git processes, code reviews, branching strategy, and collaboration.
 
----
-
-## 🎯 Цель проекта
-
-Смоделировать рабочий процесс фронтенд-команды:
-
-- разработка в изолированных feature-ветках;
-- создание Pull Request;
-- выполнение code review;
-- согласование изменений;
-- решение merge-конфликтов;
-- поддержка стабильной ветки `main`;
-- ведение технической документации.
-
-Проект также используется как тренировочная площадка для построения архитектуры и распределения задач между несколькими разработчиками.
+The project follows a modern tech stack and an architecture approach close to production standards.
 
 ---
 
-## 🧩 Командные роли
+## Project Goal
+
+To model a typical frontend team workflow:
+
+- working in isolated feature branches
+- creating Pull Requests
+- performing code reviews
+- coordinating and approving changes
+- resolving merge conflicts
+- maintaining a stable `main` branch
+
+The project also serves as a practice space for building scalable architecture and distributing tasks across multiple developers.
+
+---
+
+## Team Roles
 
 - **PM / Lead**  
-  Постановка задач, управление процессом, ревью, контроль архитектуры.
+  Task planning, process management, code review, and architecture control.
 
-- **Developer A (UI / Components)**  
-  Создание UI-компонентов, структура проекта, базовая разметка.
+- **Developer A**  
+  Building UI components, structuring the project, creating the base layout.
 
-- **Developer B (API / Services)**  
-  Работа с API, обработка данных, реализация бизнес-логики.
+- **Developer B**  
+  Working with APIs, handling data, implementing business logic.
 
 ---
 
-## 🛠 Используемый стек
+## Tech Stack
 
 - JavaScript (ES6+)
 - Vite
 - Fetch API
-- Weather API (или аналогичный источник данных)
-- CSS (компонентный подход)
+- Weather API
+- Component-based CSS
 - ESLint + Prettier + Stylelint
 - Husky (pre-commit hooks)
 
 ---
 
-## 🏗 Архитектура проекта
+## Project Architecture
 
+```txt
 src/
-api/ — низкоуровневые сетевые запросы (fetch)
-services/ — бизнес-логика, обработка и нормализация данных
-stores/ — состояние приложения (state management)
-ui/ — UI-компоненты (JS + CSS)
-utils/ — вспомогательные функции
-main.js — точка входа
-index.html — базовая разметка
-style.css — глобальные стили
-docs/
-architecture.md
-folder-conventions.md
-code-style.md
-tasks.md
+ ├── api/        — low-level network requests (fetch)
+ ├── services/   — business logic, data processing and normalization
+ ├── stores/     — application state management
+ ├── ui/         — UI components (JS + CSS)
+ ├── utils/      — helper functions
+ ├── main.js     — entry point
+ ├── index.html  — base markup
+ └── style.css   — global styles
+```
 
-Основной поток данных:
+## Main Branches
 
-UI → Services → API → Store → UI
+main — stable project version
+feature/\* — developer branches for separate tasks
 
----
+## Rules
 
-## 🌱 Git Workflow
+Each task is developed in its own branch:
+git checkout -b feature/<task-name>
 
-### Основные ветки
+Always sync with main before starting:
+git pull origin main
 
-- **main** — стабильная версия проекта
-- **feature/\*** — ветки разработчиков для отдельных задач
+After finishing the task — open a Pull Request
 
-### Правила работы
+All changes must go through code review
 
-1. Каждая задача выполняется в отдельной ветке:
-   git checkout -b feature/<task-name>
+Merging into main happens only after approval
 
-2. Перед началом работы всегда синхронизироваться:
-   git pull origin main
+# Commit Rules (Conventional Commits):
 
-3. После завершения задачи — создать Pull Request.
-4. Все изменения проходят code review.
-5. Merge в `main` делается только после одобрения.
+feat: — new feature
+fix: — bug fix
+refactor: — code restructuring
+style: — formatting and styling
+docs: — documentation updates
+chore: — configs, dependencies, maintenance
 
----
+## Future Improvements:
 
-## 🧾 Правила коммитов (Conventional Commits)
+- Add search history
+- Dark/light theme
+- Detailed forecast view
+- Unit testing (Vitest)
 
-- `feat:` — новая функциональность
-- `fix:` — исправление ошибок
-- `refactor:` — изменение структуры кода
-- `style:` — форматирование, стили
-- `docs:` — документация
-- `chore:` — служебные изменения (конфиги, зависимости)
+Team
 
----
-
-## 📄 Документация
-
-Все документы находятся в папке `docs/`:
-
-- **architecture.md** — описание архитектуры
-- **folder-conventions.md** — правила структуры каталогов
-- **code-style.md** — код-стайл проекта
-- **tasks.md** — список задач и запланированных фич
-
----
-
-## 🚀 Цели развития проекта
-
-- Добавить историю запросов
-- Темная/светлая тема
-- Детализированный прогноз
-- Юнит-тесты (Vitest)
-- E2E-тесты (Playwright)
-- Кэширование данных
-- PWA-режим
-
----
-
-## 🙌 Команда
-
-Проект создан для тренировки командного взаимодействия, архитектурного мышления и отработки рабочих процессов.
-
-PM / Lead — управление проектом
-Developer A — UI / компоненты
-Developer B — API / сервисная логика
+This project was built to practice teamwork, architectural thinking, and real development workflows.
+PM / Lead — project management
+Developer A
+Developer B

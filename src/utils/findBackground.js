@@ -1,4 +1,3 @@
-// utils/findBackground.js
 export function findBackground(conditionText, backgrounds, isDay) {
   if (!conditionText) return null
 
@@ -18,6 +17,5 @@ export function findBackground(conditionText, backgrounds, isDay) {
     return backgrounds['Ясно']
   }
 
-  // запасной вариант
   return backgrounds['Пасмурно'] || null
 }

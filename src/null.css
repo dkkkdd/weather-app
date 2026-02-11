@@ -1,6 +1,3 @@
-/* ====== MAX RESET ====== */
-
-/* Убираем все отступы и паддинги */
 *,
 *::before,
 *::after {
@@ -9,7 +6,6 @@
   box-sizing: border-box;
 }
 
-/* Убираем оформление текста и шрифтовые приколы */
 html,
 body {
   width: 100%;
@@ -18,25 +14,21 @@ body {
   background: none;
 }
 
-/* Убираем списки */
 ul,
 ol {
   list-style: none;
 }
 
-/* Убираем оформление ссылок */
 a {
   text-decoration: none;
   color: inherit;
 }
 
-/* Убираем оформление таблиц */
 table {
   border-collapse: collapse;
   border-spacing: 0;
 }
 
-/* Убираем жирность, курсив и прочие дефолтные стили */
 b,
 strong {
   font-weight: inherit;
@@ -46,14 +38,12 @@ em {
   font-style: inherit;
 }
 
-/* Убираем тени, границы, рамки у всех */
 *:where(:not(html, body)) {
   border: none;
   outline: none;
   box-shadow: none;
 }
 
-/* Убираем кнопочные и инпутовые стили */
 button,
 input,
 textarea,
@@ -65,7 +55,6 @@ select {
   appearance: none;
 }
 
-/* Картинки и медиа адекватно масштабируются */
 img,
 video {
   max-width: 100%;
@@ -73,7 +62,6 @@ video {
   display: block;
 }
 
-/* Сбрасываем заголовки */
 h1,
 h2,
 h3,
@@ -90,7 +78,6 @@ h3 {
   font-size: 1em;
 }
 
-/* Сбрасываем цитаты */
 blockquote {
   quotes: none;
 }
@@ -99,7 +86,6 @@ blockquote::after {
   content: '';
 }
 
-/* Сбрасываем кнопки */
 button {
   cursor: pointer;
 }

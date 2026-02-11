@@ -30,24 +30,18 @@ export default function Storm() {
       drops = []
       streaks = []
 
-      /* ============================
-         Heavy Rain (умеренный шторм)
-      ============================ */
-      const COUNT = Math.floor(W * 0.28) // меньше чем раньше
+      const COUNT = Math.floor(W * 0.28)
 
       for (let i = 0; i < COUNT; i++) {
         drops.push({
           x: Math.random() * W,
           y: Math.random() * H,
-          len: 12 + Math.random() * 20, // короче
-          speed: 8 + Math.random() * 10, // умеренно быстро
-          wind: 1.8 + Math.random() * 1.6, // ветер сильный, но не люто
+          len: 12 + Math.random() * 20,
+          speed: 8 + Math.random() * 10,
+          wind: 1.8 + Math.random() * 1.6,
         })
       }
 
-      /* ============================
-         streaks (редкие яркие)
-      ============================ */
       for (let i = 0; i < 8; i++) {
         streaks.push({
           x: Math.random() * W,
@@ -63,11 +57,7 @@ export default function Storm() {
     function draw() {
       ctx.clearRect(0, 0, W, H)
 
-      /* ============================
-         Lightning flash
-      ============================ */
       if (Math.random() < 0.0015) {
-        // реже
         flashAlpha = 1
       }
       if (flashAlpha > 0) {
@@ -76,12 +66,9 @@ export default function Storm() {
         flashAlpha -= 0.02
       }
 
-      /* ============================
-         Main rain
-      ============================ */
       ctx.lineCap = 'round'
       ctx.lineWidth = 1
-      ctx.strokeStyle = 'rgba(255,255,255,0.42)' // мягче
+      ctx.strokeStyle = 'rgba(255,255,255,0.42)'
 
       for (let d of drops) {
         ctx.beginPath()
@@ -98,9 +85,6 @@ export default function Storm() {
         }
       }
 
-      /* ============================
-         bright streaks
-      ============================ */
       for (let s of streaks) {
         ctx.strokeStyle = `rgba(255,255,255,${s.opacity})`
         ctx.lineWidth = 1.2

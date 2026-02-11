@@ -7,7 +7,6 @@ export const useBackground = ({ currentWeather }) => {
   const [backgrounds, setBackgrounds] = useState(null)
   const [bgImage, setBgImage] = useState(null)
 
-  // ---------- Загружаем JSON (кэшируется браузером) ----------
   useEffect(() => {
     if (backgrounds) return
 
@@ -17,7 +16,6 @@ export const useBackground = ({ currentWeather }) => {
       .catch(() => {})
   }, [])
 
-  // ---------- Находим нужный путь ----------
   useEffect(() => {
     if (!currentWeather || !backgrounds) return
 
@@ -27,13 +25,11 @@ export const useBackground = ({ currentWeather }) => {
 
     const fullUrl = `${import.meta.env.BASE_URL}${path}`
 
-    // мгновенно, если уже есть в кэше
     if (bgImageCache.has(fullUrl)) {
       setBgImage(fullUrl)
       return
     }
 
-    // грузим картинку лениво, без лагов UI
     const load = () => {
       const img = new Image()
       img.src = fullUrl
@@ -44,7 +40,6 @@ export const useBackground = ({ currentWeather }) => {
       }
     }
 
-    // если доступен requestIdleCallback → идеальный вариант
     if ('requestIdleCallback' in window) {
       window.requestIdleCallback(load, { timeout: 500 })
     } else {
@@ -52,7 +47,6 @@ export const useBackground = ({ currentWeather }) => {
     }
   }, [currentWeather, backgrounds])
 
-  // ---------- Плавный переход ----------
   useEffect(() => {
     if (!bgImage) return
 
